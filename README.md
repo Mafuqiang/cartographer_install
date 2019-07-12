@@ -11,6 +11,7 @@ sudo apt-get install -y g++ git google-mock libboost-all-dev libcairo2-dev libei
 sudo apt-get install autoconf automake libtool curl make g++ unzip
 
 #second, install ceres:
+
 cd ceres-solver
 mkdir build
 cmake ..
@@ -18,6 +19,7 @@ make -j4
 sudo make install
 
 #third, install protobuf: it may take some time
+
 cd protobuf
 git submodule update --init --recursive
 ./autogen.sh
@@ -28,17 +30,20 @@ sudo make install
 sudo ldconfig
 
 #check protobuf version, and it need the protobuf version > 3.0
+
 protoc --version
 libprotoc 3.6.1
 
 #forth, install cartographer:
+
 cd cartographer
 mkdir build
 cmake ..
 make -j4
 sudo make instll
 
-#fifth, install cartographer_ros:
+#fifth, install cartographer_ros: it need ros workspace
+
 cd catkin_ws
 catkin_make
 
