@@ -34,9 +34,7 @@ cmake ..
 make -j4
 sudo make instll
 
-#fifth, install cartographer_ros:
+#fifth, install cartographer_ros: based on the ros work space
 cd catkin_ws
 catkin_make
-
-
 
