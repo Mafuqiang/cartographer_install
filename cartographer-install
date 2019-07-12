@@ -1,0 +1,42 @@
+#first, install dependencies:
+
+sudo apt-get install -y google-mock libboost-all-dev  libeigen3-dev libgflags-dev libgoogle-glog-dev liblua5.2-dev libsuitesparse-dev libwebp-dev ninja-build protobuf-compiler python-sphinx  ros-kinetic-tf2-eigen libatlas-base-dev libsuitesparse-dev liblapack-dev
+
+sudo apt-get install -y g++ git google-mock libboost-all-dev libcairo2-dev libeigen3-dev libgflags-dev libgoogle-glog-dev liblua5.2-dev libsuitesparse-dev ninja-build python-sphinx
+
+sudo apt-get install autoconf automake libtool curl make g++ unzip
+
+#second, install ceres:
+cd ceres-solver
+mkdir build
+cmake ..
+make -j4
+sudo make install
+
+#third, install protobuf: it may take some time
+cd protobuf
+git submodule update --init --recursive
+./autogen.sh
+./configure --prefix=/usr
+make
+make check
+sudo make install
+sudo ldconfig
+
+#check protobuf version, and it need the protobuf version > 3.0
+protoc --version
+libprotoc 3.6.1
+
+#forth, install cartographer:
+cd cartographer
+mkdir build
+cmake ..
+make -j4
+sudo make instll
+
+#fifth, install cartographer_ros:
+cd catkin_ws
+catkin_make
+
+
+
